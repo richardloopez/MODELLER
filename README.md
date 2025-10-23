@@ -16,6 +16,9 @@ b.	Incluir la secuencias requeridas: Completa (UniProt) y del pdb. Para obtener 
 c.	Si la estructura tiene ligandos HETATM, estos deben indicarse de la siguiente manera: 
 8.	sequence_full = "QEKATPRNLPPRFQDGYYS/...........................--/-................------------"
 9.	pdb_aa = "QEK/...........................--/-................------------"
+   IMPORTANTE: Esta pdb_aa debe ser la secuencia del .pdb, ninguna otra. Incluso la del PDB no es correcta aquí, hay que sacarla del propio archivo. Ej: https://proteiniq.io/conversion/pdb-to-fasta
+
+10.	
 En este caso había una cadena “A” con la proteína  y luego otras dos cadenas “C” y “B” con ADN. Se indican los residuos de ADN con “.” Las “-“ indican residuos faltantes en el pdb. No se tendrán en cuenta, pero mejor ponerlos por trazabilidad. Aun así, este caso no se recomienda. Sólo se deben utilizar HETATM si están completos o faltan las puntas. De lo contrario, pasarán cosas rarillas. 
 d. A partir de la “sequence_full” (UniProt) se lanza una predicción de estructura secundaria para los loops. Web: https://bioinf.cs.ucl.ac.uk/psipred/ Vale con marcar la opción “PSIPRED 4.0 (Predict Secondary Structure) PSIPRED 4.0 (Predict Secondary Structure)” Se recomienda añadir correo. Los cálculos suelen tardar horas. Una vez terminado, se descarga el .zip y se guarda el .ss2.
 e. Revisar las CPUs a usar: En “modeller_lanzador.sh” se detallan las CPUs que se pedirán. Luego, en “config.py” se configuran los trabajos que verdaderamente lanzará modeller.
